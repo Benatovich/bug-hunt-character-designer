@@ -1,23 +1,30 @@
+import { makeStatsString } from "./utils.js";
+
 const headDropdown = document.getElementById('head-dropdown');
 const middleDropdown = document.getElementById('middle-dropdown');
 const bottomDropdown = document.getElementById('bottom-dropdown');
-const headEl = document.getElementById('top');
+const headEl = document.getElementById('head');
+const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
-const chatchphrasesEl = document.getElementById('chatch-phrases');
+const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
+const catchphraseButton = document.getElementById('catchphrase-button');
 
 const headCount = 0;
-const middleCount = 0;
-const bottomCount = 0;
+let midCount = 0;
+let bottomCount = 0;
 
-const catchphrases = 0;
+let catchphraseArray = [];
 
 headDropdown.addEventListener('change', () => {
     const value = headDropdown.value;
 
     headCount++;
-    headEl.backgroundImage = `url("./assets/${value}-head.png")`;
+    let img = document.createElement('img');
+    img.src = `url("./assets/${value}-head.png")`;
+    headEl.append(img);
+    // headEl.backgroundImage = `url("./assets/${value}-head.png")`;
     displayStats();
 });
 
@@ -58,6 +65,6 @@ function displayCatchphrases() {
         p.add('catchphrase');
         p.textContent = catchphrases;
 
-        chatchphrasesEl.append(p);
+        catchphrasesEl.append(p);
     }
 }
